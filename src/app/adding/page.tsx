@@ -5,9 +5,8 @@ import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import MediaPicker from '@/components/MediaPicker'
 
-export default function LoginForm(){
+export default function LoginForm() {
   const router = useRouter()
-
 
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -18,7 +17,7 @@ export default function LoginForm(){
       const uploadFormData = new FormData()
       uploadFormData.set('file', fileToUpload)
       const uploadResponse = await api.post('/upload', uploadFormData)
-      image = uploadResponse.data;
+      image = uploadResponse.data
     }
     console.log(image)
 
@@ -28,7 +27,7 @@ export default function LoginForm(){
       {
         projectImage: image,
         projectDescription: formData.get('content'),
-        repositoryLink: formData.get('repositoryLink')
+        repositoryLink: formData.get('repositoryLink'),
       },
       {
         headers: {
@@ -36,54 +35,51 @@ export default function LoginForm(){
         },
       },
     )
-  
+
     router.push('/')
   }
 
   return (
-
     <form onSubmit={handleCreateMemory} className="flex flex-1 flex-col gap-2">
       <div className="flex items-center justify-start">
-        <span className="text-sm w-60 leading-snug text-gray-200">
+        <span className="w-60 text-sm leading-snug text-gray-200">
           Coloque aqui seu projeto
         </span>
       </div>
       <div className="flex items-center gap-4">
         <label
           htmlFor="media"
-          className="text-sm flex cursor-pointer items-center gap-1.5 text-gray-200 hover:text-gray-100"
+          className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-200 hover:text-gray-100"
         >
           {/* <Camera className="h-4 w-4"></Camera> */}
           Anexar mídia
         </label>
         <label
           htmlFor="repositoryLink"
-          className="text-sm flex items-center gap-1.5 text-gray-200 hover:text-gray-100"
+          className="flex items-center gap-1.5 text-sm text-gray-200 hover:text-gray-100"
         >
           <input
             type="text"
             name="repositoryLink"
             id="repositoryLink"
-            placeholder='link para o repositorio'
-            className="h-6 w-52 rounded border-gray-400 bg-gray-700 text-purple-500 placeholder:text-purple-500 ml-1"
+            placeholder="link para o repositorio"
+            className="ml-1 h-6 w-52 rounded border-gray-400 bg-gray-700 text-purple-500 placeholder:text-purple-500"
           />
-          
         </label>
       </div>
-      <MediaPicker/>
+      <MediaPicker />
       <textarea
         name="content"
         spellCheck={false}
-        className="text-lg w-full flex-1 resize-none rounded border-0 bg-transparent p-0 leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0"
+        className="w-full flex-1 resize-none rounded border-0 bg-transparent p-0 text-lg leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0"
         placeholder="Fique livre para adicionar fotos, vídeos e relatos sobre essa experiência que você quer lembrar para sempre."
       />
       <button
         type="submit"
-        className="text-sm inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt uppercase leading-none text-black hover:bg-green-600"
+        className="font-alt inline-block self-end rounded-full bg-green-500 px-5 py-3 text-sm uppercase leading-none text-black hover:bg-green-600"
       >
         Salvar
       </button>
     </form>
-    
-     )
+  )
 }

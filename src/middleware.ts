@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server'
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value
   const signInURL = 'http://localhost:3000/login'
-  console.log(token)
   if (!token) {
     return NextResponse.redirect(signInURL, {
       headers: {
