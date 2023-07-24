@@ -13,6 +13,7 @@ export default function AdminButton() {
       onClick={() => {
         Cookies.set('token', 'admin', { expires: 7 })
         router.push('/adding')
+        router.refresh()
       }}
     >
       Admin Button
