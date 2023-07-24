@@ -1,14 +1,21 @@
 // import LoginAlreadyMade from '@/components/LoginAlreadyMade'
 import { api } from '@/lib/api'
 import Image from 'next/image'
+interface Project {
+  projectImage: string
+  repositoryLink: string
+  projectDescription: string
+}
 
 export default async function Home() {
-  const posts = await api.get('/posts')
+  const response = await api.get('/posts')
+
+  const posts: Project[] = response.data
 
   return (
     <>
       <div>
-        {posts.data.map((post: any) => (
+        {posts.map((post: Project) => (
           <div key={post.projectImage}>
             <Image
               src={post.projectImage}

@@ -3,7 +3,7 @@ import { api } from '@/lib/api'
 import { FormEvent } from 'react'
 import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
-import MediaPicker from '@/components/MediaPicker'
+import MediaPicker from '@/app/components/MediaPicker'
 
 export default function LoginForm() {
   const router = useRouter()
