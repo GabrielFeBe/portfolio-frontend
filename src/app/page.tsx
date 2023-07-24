@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import LinkGit from './components/LinkGit'
 
 export default function Home() {
   return (
@@ -17,7 +18,12 @@ export default function Home() {
         Login
       </Link>
       {/*  */}
-      <h1 className="leading-tight, text-5xl font-bold">Gabriel Fernandes</h1>
+      <div className="flex">
+        <h1 className="leading-tight, mr-4 text-5xl font-bold">
+          Gabriel Fernandes
+        </h1>
+        <LinkGit />
+      </div>
       <h2 className="leading-tight, text-3xl font-bold">
         Programador Full Stack
       </h2>
@@ -28,10 +34,6 @@ export default function Home() {
         colaborativo e aprender com uma equipe experiente e dedicada
       </p>
       {/* Linkeding GitHub  */}
-      <div>
-        <div className="h-10 w-10 rounded-lg bg-white bg-[url('../assets/github.svg')] bg-cover " />
-        <div className="h-10 w-10 rounded-lg bg-white bg-[url('../assets/linkedin.svg')] bg-cover" />
-      </div>
     </main>
   )
 }
