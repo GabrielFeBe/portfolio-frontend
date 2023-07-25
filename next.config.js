@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['avatars.githubusercontent.com', 'localhost' , 'media.discordapp.net'],
+    domains: [
+      'avatars.githubusercontent.com',
+      'localhost',
+      'media.discordapp.net',
+    ],
   },
   async redirects() {
     return [
@@ -19,7 +23,5 @@ const nextConfig = {
     ]
   },
 }
-
-
 
 module.exports = nextConfig

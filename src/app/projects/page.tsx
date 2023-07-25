@@ -1,11 +1,7 @@
 // import LoginAlreadyMade from '@/components/LoginAlreadyMade'
 import { api } from '@/lib/api'
+import Project from '@/types/Projects'
 import Image from 'next/image'
-interface Project {
-  projectImage: string
-  repositoryLink: string
-  projectDescription: string
-}
 
 export default async function Home() {
   const response = await api.get('/posts')
@@ -17,6 +13,7 @@ export default async function Home() {
       <div>
         {posts.map((post: Project) => (
           <div key={post.projectImage}>
+            <p>{`Isso é favorito: ${post.isFavorite}`}</p>
             <Image
               src={post.projectImage}
               alt="Project made by gabriel"

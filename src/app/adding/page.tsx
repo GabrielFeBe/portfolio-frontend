@@ -1,11 +1,13 @@
 'use client'
 import { api } from '@/lib/api'
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import MediaPicker from '@/app/components/MediaPicker'
 
-export default function LoginForm() {
+export default function CreatingPost() {
+  const [isFavorite, setIsFavorite] = useState<boolean>(false)
+
   const router = useRouter()
 
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
@@ -19,15 +21,15 @@ export default function LoginForm() {
       const uploadResponse = await api.post('/upload', uploadFormData)
       image = uploadResponse.data
     }
-    console.log(image)
-
     const token = Cookie.get('token')
+
     await api.post(
       '/posts',
       {
         projectImage: image,
         projectDescription: formData.get('content'),
         repositoryLink: formData.get('repositoryLink'),
+        isFavorite,
       },
       {
         headers: {
@@ -38,7 +40,6 @@ export default function LoginForm() {
 
     router.push('/')
   }
-
   return (
     <form onSubmit={handleCreateMemory} className="flex flex-1 flex-col gap-2">
       <div className="flex items-center justify-start">
@@ -65,6 +66,20 @@ export default function LoginForm() {
             placeholder="link para o repositorio"
             className="ml-1 h-6 w-52 rounded border-gray-400 bg-gray-700 text-purple-500 placeholder:text-purple-500"
           />
+        </label>
+        <label
+          htmlFor="isFavorite"
+          className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-400 "
+        >
+          <input
+            type="checkbox"
+            name="isFavorite"
+            id="isFavorite"
+            checked={isFavorite}
+            onChange={() => setIsFavorite(!isFavorite)}
+            className="h-4 w-4 appearance-none rounded border-gray-400 bg-gray-700 text-purple-500  checked:bg-purple-900 focus:border-purple-300 focus:outline-none focus:ring"
+          />
+          Tornar Projeto Favorito
         </label>
       </div>
       <MediaPicker />
