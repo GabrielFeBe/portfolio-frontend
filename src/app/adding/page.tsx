@@ -4,6 +4,7 @@ import { FormEvent, useState } from 'react'
 import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import MediaPicker from '@/app/components/MediaPicker'
+import { Camera } from 'lucide-react'
 
 export default function CreatingPost() {
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
@@ -30,6 +31,7 @@ export default function CreatingPost() {
         projectDescription: formData.get('content'),
         repositoryLink: formData.get('repositoryLink'),
         isFavorite,
+        title: formData.get('title'),
       },
       {
         headers: {
@@ -39,6 +41,7 @@ export default function CreatingPost() {
     )
 
     router.push('/')
+    router.refresh()
   }
   return (
     <form onSubmit={handleCreateMemory} className="flex flex-1 flex-col gap-2">
@@ -52,7 +55,7 @@ export default function CreatingPost() {
           htmlFor="media"
           className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-200 hover:text-gray-100"
         >
-          {/* <Camera className="h-4 w-4"></Camera> */}
+          <Camera className="h-4 w-4"></Camera>
           Anexar mídia
         </label>
         <label
@@ -64,6 +67,18 @@ export default function CreatingPost() {
             name="repositoryLink"
             id="repositoryLink"
             placeholder="link para o repositorio"
+            className="ml-1 h-6 w-52 rounded border-gray-400 bg-gray-700 text-purple-500 placeholder:text-purple-500"
+          />
+        </label>
+        <label
+          htmlFor="title"
+          className="flex items-center gap-1.5 text-sm text-gray-200 hover:text-gray-100"
+        >
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="titulo para o repositorio"
             className="ml-1 h-6 w-52 rounded border-gray-400 bg-gray-700 text-purple-500 placeholder:text-purple-500"
           />
         </label>
