@@ -1,10 +1,10 @@
-import AboutMe from './components/AboutMe'
+import AboutMe from './components/aboutme/AboutMe'
 import { api } from '@/lib/api'
 import Project from '@/types/Projects'
-import Stacks from './components/Stacks'
+import Stacks from './components/aboutme/Stacks'
 import ProjectsHome from './components/ProjectsHome'
 import StatementBall from './components/StatementBall'
-import MessageCard from './components/MessageCard'
+import MessageCard from './components/message/MessageCard'
 
 export default async function Home() {
   const response = await api.get('/favorites')
