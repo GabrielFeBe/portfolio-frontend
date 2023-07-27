@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       borderRadius: {
         custom: '40px 40px 40px 0',
+        20: '20px',
       },
       colors: {
         customGray: '#27323E',

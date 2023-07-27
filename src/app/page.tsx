@@ -4,6 +4,7 @@ import Project from '@/types/Projects'
 import Stacks from './components/Stacks'
 import ProjectsHome from './components/ProjectsHome'
 import StatementBall from './components/StatementBall'
+import MessageCard from './components/MessageCard'
 
 export default async function Home() {
   const response = await api.get('/favorites')
@@ -27,25 +28,7 @@ export default async function Home() {
 
       {/* Footer */}
       <footer className="min-h-4/6-screen bg-customGray">
-        <StatementBall orange="C" rest="ontate-me" bgColor="bg-customGray" />
-        <div className="grid min-h-4/6-screen grid-cols-2">
-          <div className="mt-3 pl-20">
-            <input
-              type="text"
-              className="border-gradient border bg-customGray"
-              placeholder="Nome"
-            />
-            <input
-              type="text"
-              className="border-gradient border bg-customGray"
-              placeholder="Sobrenome"
-            />
-            <input
-              type="email"
-              className="border-gradient border bg-customGray"
-            />
-          </div>
-        </div>
+        <MessageCard />
       </footer>
     </main>
   )
