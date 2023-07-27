@@ -10,21 +10,21 @@ export default function NavBar() {
       <div>
         <Link
           href="/adding"
-          className="inline-block w-44 self-center rounded-full bg-green-500 px-5 py-3 text-center text-sm leading-none text-black hover:bg-green-600"
+          className="hover:mix-blend inline-block w-44 self-center rounded-full bg-gradient-to-r from-customOrange to-customRed px-5 py-3 text-center text-sm leading-none text-black transition duration-300 hover:opacity-70"
         >
           Add New Project
         </Link>
         {!token && (
           <Link
             href="/login"
-            className="inline-block w-44 self-center rounded-full bg-green-500 px-5 py-3 text-center text-sm leading-none text-black hover:bg-green-600"
+            className="hover:mix-blend inline-block w-44 self-center rounded-full bg-gradient-to-r from-customOrange to-customRed px-5 py-3 text-center text-sm leading-none text-black transition duration-300 hover:opacity-70"
           >
             Login
           </Link>
         )}
         <Link
           href="/"
-          className="inline-block w-44 self-center rounded-full bg-green-500 px-5 py-3 text-center text-sm leading-none text-black hover:bg-green-600"
+          className="hover:mix-blend inline-block w-44 self-center rounded-full bg-gradient-to-r from-customOrange to-customRed px-5 py-3 text-center text-sm leading-none text-black transition duration-300 hover:opacity-70"
         >
           Home
         </Link>

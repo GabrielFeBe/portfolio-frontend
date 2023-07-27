@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        custom: '40px 40px 40px 0',
+      },
+      colors: {
+        customGray: '#27323E',
+        customOrange: '#FC4A1A',
+        customRed: '#F7B733',
+        customSlate: '#212529',
+      },
       scale: {
         'hover-grow': '1.2',
       },

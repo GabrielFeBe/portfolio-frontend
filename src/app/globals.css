@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.border-gradient {
+  border-image: linear-gradient(135deg, #FC4A1A, #F7B733) 1; 
+}
+

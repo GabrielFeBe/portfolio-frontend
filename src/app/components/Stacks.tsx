@@ -4,7 +4,7 @@ import SegundaColuna from './SegundaColuna'
 
 export default function Stacks() {
   return (
-    <div className="flex w-5/6 flex-1 flex-col justify-center pl-20">
+    <div className="flex w-5/6 flex-1 flex-col justify-center pl-20 ">
       <div className="flex h-3/6 flex-col">
         <h1 className="mb-10 mr-4 text-5xl font-bold leading-tight">
           Tecnologias Principais
