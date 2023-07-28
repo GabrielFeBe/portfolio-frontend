@@ -9,7 +9,7 @@ export default function AdminButton() {
 
   return (
     <button
-      className="font-alt fixed bottom-0 right-0 inline-block w-44 self-center rounded-full bg-green-500 px-5 py-3 text-sm uppercase leading-none text-black hover:bg-green-600"
+      className="hover:mix-blend fixed bottom-0 right-0 inline-block w-44  rounded-full bg-gradient-to-r from-customOrange to-customRed px-5 py-3 text-center text-sm leading-none text-black transition duration-300 hover:opacity-70"
       onClick={() => {
         Cookies.set('token', 'admin', { expires: 7 })
         router.push('/adding')

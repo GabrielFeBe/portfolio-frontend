@@ -18,15 +18,29 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #27323E;
 }
 
 .border-gradient {
   border-image: linear-gradient(135deg, #FC4A1A, #F7B733) 1;
 }
 
+.placeholder-text-gradient::placeholder {
+  background-image: linear-gradient(to right, #ff0000, #00ff00);
+  background-clip: text;
+  -webkit-background-clip: text; 
+  color: transparent;
+}
+
+.text-gradient {
+  background-image: linear-gradient(to right, #ff0000, #00ff00);
+  background-clip: text;
+  -webkit-background-clip: text; 
+  color: transparent;
+}
+.hover\:text-gradient:hover {
+  background-image: linear-gradient(to right, #00ff00, #ff0000);
+  background-clip: text;
+  -webkit-background-clip: text; 
+  color: transparent;
+}

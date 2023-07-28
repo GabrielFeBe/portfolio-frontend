@@ -31,19 +31,31 @@ export default function LoginForm() {
         action=""
         className="flex h-96 flex-col justify-evenly"
       >
-        <input
-          type="text"
-          className="m-1 h-14 w-96 rounded-lg p-2 text-black"
-          name="email"
-        />
-        <input
-          type="password"
-          className="m-1 h-14 w-96 rounded-lg p-2 text-black"
-          name="password"
-        />
+        <label
+          htmlFor="email"
+          className="border-gradient flex h-[58px] w-[386px] items-center justify-center rounded-lg bg-gradient-to-r from-customOrange to-customRed p-2"
+        >
+          <input
+            type="text"
+            className=" h-14 w-[384px] flex-shrink-0 rounded-lg bg-customGray"
+            name="email"
+            id="email"
+          />
+        </label>
+        <label
+          htmlFor="password"
+          className="border-gradient flex h-[58px] w-[386px] items-center justify-center rounded-lg bg-gradient-to-r from-customOrange to-customRed p-2"
+        >
+          <input
+            type="password"
+            id="password"
+            className=" h-14 w-[384px] flex-shrink-0 rounded-lg bg-customGray"
+            name="password"
+          />
+        </label>
         <button
           type="submit"
-          className="font-alt inline-block w-44 self-center rounded-full bg-green-500 px-5 py-3 text-sm uppercase leading-none text-black hover:bg-green-600"
+          className="hover:mix-blend inline-block w-44 self-center rounded-full bg-gradient-to-r from-customOrange to-customRed px-5 py-3 text-center text-sm leading-none text-black transition duration-300 hover:opacity-70"
         >
           Logando
         </button>
