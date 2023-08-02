@@ -19,6 +19,7 @@ module.exports = {
       },
       scale: {
         'hover-grow': '1.2',
+        'hover-grow-foto': '1.02',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -18,6 +18,7 @@ export default function LoginForm() {
       const { token } = uploadResponse.data
       Cookies.set('token', token, { expires: 7 })
       route.push('/adding')
+      route.refresh()
       // eslint-disable-next-line
     } catch (err: any) {
       console.log(err.response.data.message)

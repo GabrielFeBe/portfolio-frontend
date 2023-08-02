@@ -23,10 +23,10 @@ export default function ProjectsHome({ projects }: Props) {
             key={project.projectImage}
             className="mt-3 flex w-5/6 flex-1 flex-col pl-20"
           >
-            <h2>{project.title}</h2>
+            <h2 className="text-xl">{project.title}</h2>
             <Link
-              href={`/project/${project.id}`}
-              className="relative h-1/2 max-w-screen-sm"
+              href={`/projects/${project.id}`}
+              className="relative mt-2 h-1/2 max-w-screen-sm transition duration-1000 hover:scale-hover-grow-foto"
             >
               <Image
                 src={project.projectImage}
@@ -37,7 +37,13 @@ export default function ProjectsHome({ projects }: Props) {
               />
               <div className="border-gradient absolute left-0 top-0 h-full w-full bg-slate-950 opacity-50 hover:border-2" />
             </Link>
-            <span className="h-1/3 max-w-screen-sm">{text}</span>
+            <a
+              className="text-gradient hover:text-gradient mt-2"
+              href={project.repositoryLink}
+            >
+              Link do repositorio no GitHub
+            </a>
+            <span className="mt-2 h-1/3 max-w-screen-sm">{`Descrição: ${text}`}</span>
           </div>
         )
       })}

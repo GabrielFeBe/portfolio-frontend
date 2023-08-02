@@ -5,4 +5,6 @@ export default interface Project {
   projectDescription: string
   isFavorite: boolean
   title: string
+  mainLanguage: string
+  createdAt: Date
 }

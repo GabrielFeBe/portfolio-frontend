@@ -6,8 +6,11 @@ import { useRouter } from 'next/navigation'
 import MediaPicker from '@/app/components/MediaPicker'
 import { Camera } from 'lucide-react'
 import StatementBall from './StatementBall'
+import DatePickerComp from './DatePicker'
+import dayjs from 'dayjs'
 
 export default function AddingNewProject() {
+  const [startDate, setStartDate] = useState(new Date())
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
 
   const router = useRouter()
@@ -16,6 +19,7 @@ export default function AddingNewProject() {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     const fileToUpload = formData.get('coverUrl')
+    const dateTime = dayjs(startDate).format()
     let image = ''
     if (fileToUpload) {
       const uploadFormData = new FormData()
@@ -33,6 +37,8 @@ export default function AddingNewProject() {
         repositoryLink: formData.get('repositoryLink'),
         isFavorite,
         title: formData.get('title'),
+        mainLanguage: formData.get('mainLanguage'),
+        createdAt: dateTime,
       },
       {
         headers: {
@@ -90,6 +96,18 @@ export default function AddingNewProject() {
           />
         </label>
         <label
+          htmlFor="mainLanguage"
+          className="flex items-center gap-1.5 text-sm text-gray-200 hover:text-gray-100"
+        >
+          <input
+            type="text"
+            name="mainLanguage"
+            id="mainLanguage"
+            placeholder="Linguagem principal do projeto"
+            className="ml-1 h-6 w-52 rounded border-gray-400 bg-transparent"
+          />
+        </label>
+        <label
           htmlFor="isFavorite"
           className="flex items-center gap-1.5 text-sm hover:text-gray-400 "
         >
@@ -103,13 +121,14 @@ export default function AddingNewProject() {
           />
           Tornar Projeto Favorito
         </label>
+        <DatePickerComp setStartDate={setStartDate} startDate={startDate} />
       </div>
       <MediaPicker />
       <textarea
         name="content"
         spellCheck={false}
         className="w-full flex-1 resize-none rounded border-0 bg-transparent p-0 text-lg leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0"
-        placeholder="Coloque aqui seus projetos para que eles possam ser visualizados no site/>"
+        placeholder="<Coloque aqui seus projetos para que eles possam ser visualizados no site/>"
       />
       <button
         type="submit"

@@ -39,7 +39,7 @@ body {
   color: transparent;
 }
 .hover\:text-gradient:hover {
-  background-image: linear-gradient(to right, #00ff00, #ff0000);
+  background-image: linear-gradient(to right, #ff0000, #ff8c00, #ffff00, #ff5733);
   background-clip: text;
   -webkit-background-clip: text; 
   color: transparent;
