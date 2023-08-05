@@ -4,7 +4,6 @@ import Project from '@/types/Projects'
 import Stacks from './components/aboutme/Stacks'
 import ProjectsHome from './components/ProjectsHome'
 import StatementBall from './components/StatementBall'
-import MessageCard from './components/message/MessageCard'
 
 export default async function Home() {
   const response = await api.get('/favorites')
@@ -25,11 +24,6 @@ export default async function Home() {
       {/* down side */}
       <StatementBall orange="P" rest="rojetos" bgColor="bg-customSlate" />
       <ProjectsHome projects={data} />
-
-      {/* Footer */}
-      <footer className="min-h-4/6-screen bg-customGray">
-        <MessageCard />
-      </footer>
     </main>
   )
 }

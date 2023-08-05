@@ -40,6 +40,8 @@ export default function ProjectsHome({ projects }: Props) {
             <a
               className="text-gradient hover:text-gradient mt-2"
               href={project.repositoryLink}
+              target="_blank"
+              rel="noreferrer"
             >
               Link do repositorio no GitHub
             </a>

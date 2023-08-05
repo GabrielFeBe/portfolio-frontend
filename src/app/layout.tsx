@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from './components/NavBar'
+import MessageCard from './components/message/MessageCard'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -20,6 +21,9 @@ export default function RootLayout({
         {/* <NavBar /> */}
         <NavBar />
         {children}
+        <footer className="min-h-4/6-screen bg-customGray">
+          <MessageCard />
+        </footer>
       </body>
     </html>
   )

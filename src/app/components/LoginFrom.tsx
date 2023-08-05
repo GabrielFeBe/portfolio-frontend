@@ -21,7 +21,7 @@ export default function LoginForm() {
       route.refresh()
       // eslint-disable-next-line
     } catch (err: any) {
-      console.log(err.response.data.message)
+      console.log(err)
     }
   }
 
