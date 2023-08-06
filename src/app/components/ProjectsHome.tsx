@@ -34,6 +34,7 @@ export default function ProjectsHome({ projects }: Props) {
                 width={250}
                 height={250}
                 className="h-full w-full"
+                quality={100}
               />
               <div className="border-gradient absolute left-0 top-0 h-full w-full bg-slate-950 opacity-50 hover:border-2" />
             </Link>

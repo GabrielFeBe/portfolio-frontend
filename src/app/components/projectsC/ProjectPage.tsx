@@ -26,6 +26,7 @@ export default function ProjectPage({ project }: Props) {
             width={250}
             height={250}
             className="h-[500px] w-1/2 rounded-20"
+            quality={100}
           />
           <div className="relative ml-3 flex h-[500px] w-1/2 flex-col">
             <h3>Descrição</h3>
