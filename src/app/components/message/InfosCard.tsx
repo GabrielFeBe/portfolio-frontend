@@ -15,9 +15,9 @@ export default function InfosCard() {
       <div className="flex pl-3">
         <Mail />
         <span className="pl-1">
-          Email: hu3master.zord1@gmail.com
+          Email: gabrielferdev@gmail.com
           <br />
-          hu3master.zord@hotmail.com
+          hu3master.zord1@gmail.com
         </span>
       </div>
       <div className="flex pl-3">

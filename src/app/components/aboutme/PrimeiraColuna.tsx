@@ -9,7 +9,7 @@ export default function PrimeiraColuna() {
       </div>
       <div className="flex w-20 transform-gpu flex-col items-center justify-center rounded-lg from-customOrange to-customRed p-2 text-gray-500 transition-transform hover:scale-hover-grow hover:bg-gradient-to-r">
         <div className="h-10 w-10  bg-[url('../assets/ts.svg')] bg-cover" />
-        TS
+        Ts
       </div>
       <div className="flex w-20 transform-gpu flex-col items-center justify-center rounded-lg from-customOrange to-customRed p-2 text-gray-500 transition-transform hover:scale-hover-grow hover:bg-gradient-to-r">
         <div className="h-10 w-10  bg-[url('../assets/react.svg')] bg-cover" />
