@@ -21,13 +21,17 @@ export default function AddingNewProject() {
     const fileToUpload = formData.get('coverUrl')
     const dateTime = dayjs(startDate).format()
     let image = ''
+    const token = Cookie.get('token')
     if (fileToUpload) {
       const uploadFormData = new FormData()
       uploadFormData.set('file', fileToUpload)
-      const uploadResponse = await api.post('/upload', uploadFormData)
+      const uploadResponse = await api.post('/upload', uploadFormData, {
+        headers: {
+          Authorization: token,
+        },
+      })
       image = uploadResponse.data
     }
-    const token = Cookie.get('token')
 
     await api.post(
       '/posts',
