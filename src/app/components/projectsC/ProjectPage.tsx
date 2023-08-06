@@ -23,8 +23,8 @@ export default function ProjectPage({ project }: Props) {
           <Image
             src={project.projectImage}
             alt="project"
-            width={250}
-            height={250}
+            width={1916}
+            height={974}
             className="h-[500px] w-1/2 rounded-20"
             quality={100}
           />

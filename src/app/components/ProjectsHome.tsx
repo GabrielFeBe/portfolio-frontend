@@ -31,8 +31,8 @@ export default function ProjectsHome({ projects }: Props) {
               <Image
                 src={project.projectImage}
                 alt="project"
-                width={250}
-                height={250}
+                width={1916}
+                height={974}
                 className="h-full w-full"
                 quality={100}
               />
