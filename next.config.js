@@ -5,6 +5,7 @@ const nextConfig = {
       'avatars.githubusercontent.com',
       'localhost',
       'media.discordapp.net',
+      'portfolio-backend-production-bb6c.up.railway.app',
     ],
   },
   async redirects() {
