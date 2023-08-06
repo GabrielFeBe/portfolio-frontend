@@ -21,7 +21,7 @@ export default function ProjectsHome({ projects }: Props) {
         return (
           <div
             key={project.projectImage}
-            className="mt-3 flex w-5/6 flex-1 flex-col pl-20"
+            className="mt-10 flex w-5/6 flex-1 flex-col pl-20"
           >
             <h2 className="text-xl">{project.title}</h2>
             <Link

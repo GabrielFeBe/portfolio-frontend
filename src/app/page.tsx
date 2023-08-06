@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="grid min-h-4/6-screen grid-cols-2 bg-customGray">
+      <div className="grid h-[578px] grid-cols-2 bg-customGray">
         {/* right side */}
         <div className="flex w-5/6 flex-1 flex-col justify-center pl-20">
           <AboutMe />
@@ -22,7 +22,9 @@ export default async function Home() {
         <Stacks />
       </div>
       {/* down side */}
-      <StatementBall orange="P" rest="rojetos" bgColor="bg-customSlate" />
+      <div className="bg-customSlate pt-10">
+        <StatementBall orange="P" rest="rojetos" bgColor="bg-customSlate" />
+      </div>
       <ProjectsHome projects={data} />
     </main>
   )

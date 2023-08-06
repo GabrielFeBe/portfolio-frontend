@@ -13,7 +13,7 @@ interface Props {
 
 export default function ProjectPage({ project }: Props) {
   return (
-    <div className="flex h-[558px] w-[1202px] items-center justify-center rounded-20 bg-gradient-to-r from-customOrange to-customRed">
+    <div className="mt-10 flex h-[558px] w-[1202px] items-center justify-center rounded-20 bg-gradient-to-r from-customOrange to-customRed">
       <div className="w-[1200px] rounded-20 bg-customGray">
         <h1 className="ml-2">{project.title}</h1>
         <div className="ml-2">{`Publicado: ${dayjs(project.createdAt).format(
