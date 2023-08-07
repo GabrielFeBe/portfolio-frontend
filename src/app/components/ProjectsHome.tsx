@@ -9,7 +9,7 @@ interface Props {
 
 export default function ProjectsHome({ projects }: Props) {
   return (
-    <div className="min-h-3/6-screen grid grid-cols-2 bg-customSlate">
+    <div className="grid h-[1000px] bg-customSlate sm:h-[1200px] sm:grid-cols-1 lg:h-[594px] lg:grid-cols-2">
       {projects.map((project: Project) => {
         const { projectDescription } = project
         const text = projectDescription
@@ -26,14 +26,14 @@ export default function ProjectsHome({ projects }: Props) {
             <h2 className="text-xl">{project.title}</h2>
             <Link
               href={`/projects/${project.id}`}
-              className="relative mt-2 h-1/2 max-w-screen-sm transition duration-1000 hover:scale-hover-grow-foto"
+              className="relative mt-2 max-w-screen-sm transition duration-1000 hover:scale-hover-grow-foto sm:h-1/2"
             >
               <Image
                 src={project.projectImage}
                 alt="project"
                 width={1916}
                 height={974}
-                className="h-full w-full"
+                className="sm:h-full sm:w-full"
                 quality={100}
               />
               <div className="border-gradient absolute left-0 top-0 h-full w-full bg-slate-950 opacity-50 hover:border-2" />
@@ -46,7 +46,7 @@ export default function ProjectsHome({ projects }: Props) {
             >
               Link do repositorio no GitHub
             </a>
-            <span className="mt-2 h-1/3 max-w-screen-sm">{`Descrição: ${text}`}</span>
+            <span className="xg:text-sm mt-2 h-1/3 max-w-screen-sm text-xs lg:text-xs">{`Descrição: ${text}`}</span>
           </div>
         )
       })}

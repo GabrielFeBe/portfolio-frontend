@@ -3,7 +3,7 @@ import { LocateFixed, Mail, Smartphone } from 'lucide-react'
 
 export default function InfosCard() {
   return (
-    <div className="ml-20 mt-10 flex h-[446px] w-[404px] flex-col justify-between rounded-lg bg-gradient-to-r from-customOrange to-customRed text-lg font-bold">
+    <div className="mb-5 ml-20 mt-10 flex h-[446px] w-[404px] flex-col justify-between rounded-lg bg-gradient-to-r from-customOrange to-customRed text-lg font-bold sm:mb-0 lg:mt-0">
       <h3 className="pl-10 pr-5 pt-10 font-bold">Informação para contato</h3>
       <p className="pl-10 pr-5 text-left">
         Vamos falar sobre negocios, eu adoraria ouvir qualquer proposta.
