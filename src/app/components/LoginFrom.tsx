@@ -26,7 +26,7 @@ export default function LoginForm() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center sm:p-24">
       <form
         onSubmit={handleLogin}
         action=""
@@ -34,24 +34,26 @@ export default function LoginForm() {
       >
         <label
           htmlFor="email"
-          className="border-gradient flex h-[58px] w-[386px] items-center justify-center rounded-lg bg-gradient-to-r from-customOrange to-customRed p-2"
+          className="border-gradient flex h-[40px] w-[268px] items-center justify-center rounded-lg bg-gradient-to-r from-customOrange to-customRed p-2 sm:h-[58px] sm:w-[386px]"
         >
           <input
             type="text"
-            className=" h-14 w-[384px] flex-shrink-0 rounded-lg bg-customGray"
+            className="h-[38px] w-[266px] flex-shrink-0 rounded-lg bg-customGray pl-2 sm:h-14 sm:w-[384px]"
             name="email"
             id="email"
+            placeholder="Email"
           />
         </label>
         <label
           htmlFor="password"
-          className="border-gradient flex h-[58px] w-[386px] items-center justify-center rounded-lg bg-gradient-to-r from-customOrange to-customRed p-2"
+          className="flex h-[40px] w-[268px] items-center justify-center rounded-lg bg-gradient-to-r from-customOrange to-customRed p-2 sm:h-[58px] sm:w-[386px]"
         >
           <input
             type="password"
             id="password"
-            className=" h-14 w-[384px] flex-shrink-0 rounded-lg bg-customGray"
+            className="h-[38px] w-[266px] flex-shrink-0 rounded-lg bg-customGray pl-2 sm:h-14 sm:w-[384px]"
             name="password"
+            placeholder="Senha"
           />
         </label>
         <button
