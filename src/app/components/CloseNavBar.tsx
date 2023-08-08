@@ -9,7 +9,6 @@ interface Props {
 export default function CloseNavBar({ children }: Props) {
   const [closed, setClosed] = useState(false)
 
-  console.log(closed)
   return (
     <div className="bg-customGray">
       <div
