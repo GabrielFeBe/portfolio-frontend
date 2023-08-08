@@ -13,39 +13,42 @@ interface Props {
 
 export default function ProjectPage({ project }: Props) {
   return (
-    <div className="mt-10 flex h-[558px] w-[1202px] items-center justify-center rounded-20 bg-gradient-to-r from-customOrange to-customRed">
-      <div className="w-[1200px] rounded-20 bg-customGray">
-        <h1 className="ml-2">{project.title}</h1>
+    <div className="mt-10 flex h-[778px] w-[302px] items-center justify-center rounded-20 bg-gradient-to-r from-customOrange to-customRed sm:h-[1080px] sm:w-[604px] xl:h-[584px] xl:w-[1204px]">
+      <div className="w-[300px] rounded-20 bg-customGray p-2 sm:w-[600px] xl:w-[1200px]">
+        <h1 className="ml-2 text-xl font-bold xl:text-2xl">{project.title}</h1>
         <div className="ml-2">{`Publicado: ${dayjs(project.createdAt).format(
           'D[ de ]MMMM[, ]YYYY',
         )}`}</div>
-        <div className="mt-2 flex w-full items-center justify-center">
+        <div className="mt-2 flex w-full flex-col items-center justify-center xl:flex-row">
           <Image
             src={project.projectImage}
             alt="project"
             width={1916}
             height={974}
-            className="h-[500px] w-1/2 rounded-20"
+            className="aspect-video h-[200px] rounded-20 sm:h-[500px] xl:w-1/2"
             quality={100}
           />
-          <div className="relative ml-3 flex h-[500px] w-1/2 flex-col">
-            <h3>Descrição</h3>
-            <span>{project.projectDescription}</span>
-            <span>{`Linguagem mais usada: ${project.mainLanguage}`}</span>
+          <div className="relative ml-3 flex h-[500px] flex-col pt-3 xl:w-1/2">
+            <h3 className="pt-3 text-lg font-bold">Descrição</h3>
+            <span className="pt-3 text-sm sm:text-base">
+              {project.projectDescription}
+            </span>
+            <span className="pt-3 text-sm sm:text-base">{`Linguagem mais usada: ${project.mainLanguage}`}</span>
             <a
               href={project.repositoryLink}
               target="_blank"
               rel="noreferrer"
-              className="text-gradient hover:text-gradient mt-2"
+              className="text-gradient hover:text-gradient mt-2 pt-1 text-sm sm:text-base"
             >
               Link para o repositorio
             </a>
 
-            {project.isFavorite && (
-              <div className="absolute bottom-1 right-1">
-                <StarIcon color="yellow" fill="yellow" />
-              </div>
-            )}
+            <div className="absolute bottom-1 right-1">
+              <StarIcon
+                color="yellow"
+                fill={project.isFavorite ? 'yellow' : 'default'}
+              />
+            </div>
           </div>
         </div>
       </div>

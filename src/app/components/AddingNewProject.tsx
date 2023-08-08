@@ -5,7 +5,6 @@ import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import MediaPicker from '@/app/components/MediaPicker'
 import { Camera } from 'lucide-react'
-import StatementBall from './StatementBall'
 import DatePickerComp from './DatePicker'
 import dayjs from 'dayjs'
 
@@ -58,16 +57,9 @@ export default function AddingNewProject() {
   return (
     <form
       onSubmit={handleCreateMemory}
-      className="flex  min-h-full w-2/3 flex-col gap-2"
+      className="flex min-h-full w-full flex-col gap-2 xl:w-2/3"
     >
-      <div className="flex items-center justify-start">
-        <StatementBall
-          orange="C"
-          rest="oloque aqui seu projeto"
-          bgColor="customGray"
-        />
-      </div>
-      <div className="flex items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4">
         <label
           htmlFor="media"
           className="flex cursor-pointer items-center gap-1.5 text-sm "

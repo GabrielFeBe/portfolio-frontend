@@ -9,7 +9,7 @@ interface Props {
 
 export default function ProjectsHome({ projects }: Props) {
   return (
-    <div className="grid h-[1000px] bg-customSlate sm:h-[1200px] sm:grid-cols-1 lg:h-[594px] lg:grid-cols-2">
+    <div className="grid h-auto bg-customSlate pb-4  sm:grid-cols-1 lg:grid-cols-2">
       {projects.map((project: Project) => {
         const { projectDescription } = project
         const text = projectDescription

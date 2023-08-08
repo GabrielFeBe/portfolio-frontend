@@ -20,7 +20,7 @@ export default function MediaPicker() {
         type="file"
         id="media"
         accept="image/*"
-        className="invisible  h-0 w-0"
+        className="invisible h-0 w-0"
         name="coverUrl"
       />
       {preview && (
