@@ -6,9 +6,15 @@ import ProjectsHome from './components/ProjectsHome'
 import StatementBall from './components/StatementBall'
 
 export default async function Home() {
-  const response = await api.get('/favorites')
+  let data: Project[] = []
+  let error = false
+  try {
+    const response = await api.get('/favorites')
 
-  const data: Project[] = response.data
+    data = response.data
+  } catch (err) {
+    error = true
+  }
 
   return (
     <main>
@@ -24,7 +30,13 @@ export default async function Home() {
       <div className="bg-customSlate pt-10">
         <StatementBall orange="P" rest="rojetos" bgColor="bg-customSlate" />
       </div>
-      <ProjectsHome projects={data} />
+      {error ? (
+        <h1 className="bg-customGray text-2xl font-bold">
+          Erro Com o Servidor
+        </h1>
+      ) : (
+        <ProjectsHome projects={data} />
+      )}
     </main>
   )
 }
