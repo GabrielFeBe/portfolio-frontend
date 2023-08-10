@@ -13,7 +13,7 @@ export default function CloseNavBar({ children }: Props) {
     <div className="bg-customGray">
       <div
         className={`nav-bar transition-all ${
-          closed ? 'h-20' : 'h-0'
+          closed ? 'h-52 sm:h-20' : 'h-0'
         } flex items-center justify-between overflow-hidden duration-500 ease-in-out`}
       >
         <button
@@ -24,18 +24,19 @@ export default function CloseNavBar({ children }: Props) {
         </button>
         {children}
       </div>
-      {!closed && (
+
+      <div
+        className={`nav-bar transition-all ${
+          !closed ? 'h-20' : 'h-0'
+        } flex items-center justify-between overflow-hidden duration-500 ease-in-out`}
+      >
         <button
-          className={`transition-all ${
-            !closed
-              ? 'flex h-[64px] w-[64px] items-center justify-center'
-              : 'h-0 w-0'
-          } duration-3000 ml-3 overflow-hidden rounded-full bg-gradient-to-r from-customOrange to-customRed ease-in-out`}
+          className="ml-3 flex h-[64px] w-[64px] items-center justify-center rounded-full bg-gradient-to-r from-customOrange to-customRed"
           onClick={() => setClosed((closed) => !closed)}
         >
           <LucideAlignJustify />
         </button>
-      )}
+      </div>
     </div>
   )
 }
