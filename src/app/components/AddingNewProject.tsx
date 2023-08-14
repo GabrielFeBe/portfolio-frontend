@@ -11,6 +11,7 @@ import dayjs from 'dayjs'
 export default function AddingNewProject() {
   const [startDate, setStartDate] = useState(new Date())
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
+  const [formError, setFormError] = useState(false)
 
   const router = useRouter()
 
@@ -24,40 +25,49 @@ export default function AddingNewProject() {
     if (fileToUpload) {
       const uploadFormData = new FormData()
       uploadFormData.set('file', fileToUpload)
-      const uploadResponse = await api.post('/upload', uploadFormData, {
-        headers: {
-          Authorization: token,
-        },
-      })
-      image = uploadResponse.data
+      try {
+        const uploadResponse = await api.post('/upload', uploadFormData, {
+          headers: {
+            Authorization: token,
+          },
+        })
+        image = uploadResponse.data
+      } catch (err) {
+        setFormError(true)
+      }
     }
-
-    await api.post(
-      '/posts',
-      {
-        projectImage: image,
-        projectDescription: formData.get('content'),
-        repositoryLink: formData.get('repositoryLink'),
-        isFavorite,
-        title: formData.get('title'),
-        mainLanguage: formData.get('mainLanguage'),
-        createdAt: dateTime,
-      },
-      {
-        headers: {
-          Authorization: token,
+    try {
+      await api.post(
+        '/posts',
+        {
+          projectImage: image,
+          projectDescription: formData.get('content'),
+          repositoryLink: formData.get('repositoryLink'),
+          isFavorite,
+          title: formData.get('title'),
+          mainLanguage: formData.get('mainLanguage'),
+          createdAt: dateTime,
         },
-      },
-    )
-
-    router.push('/')
-    router.refresh()
+        {
+          headers: {
+            Authorization: token,
+          },
+        },
+      )
+      router.push('/')
+      router.refresh()
+    } catch (err) {
+      setFormError(true)
+    }
   }
+
+  console.log(formError)
+  console.log(formError)
 
   return (
     <form
       onSubmit={handleCreateMemory}
-      className="flex min-h-full w-full flex-col gap-2 xl:w-2/3"
+      className="relative flex min-h-full w-full flex-col gap-2 xl:w-2/3"
     >
       <div className="flex flex-wrap items-center gap-4">
         <label
@@ -132,6 +142,11 @@ export default function AddingNewProject() {
       >
         Salvar
       </button>
+      {formError && (
+        <p className="relative font-bold text-red-600">
+          Você não tem permissão para colocar nada no banco.
+        </p>
+      )}
     </form>
   )
 }

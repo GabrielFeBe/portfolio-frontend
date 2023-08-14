@@ -10,7 +10,7 @@ export default function CloseNavBar({ children }: Props) {
   const [closed, setClosed] = useState(false)
 
   return (
-    <div className="bg-customGray">
+    <header className="bg-customGray">
       <div
         className={`nav-bar transition-all ${
           closed ? 'h-52 sm:h-20' : 'h-0'
@@ -37,6 +37,6 @@ export default function CloseNavBar({ children }: Props) {
           <LucideAlignJustify />
         </button>
       </div>
-    </div>
+    </header>
   )
 }

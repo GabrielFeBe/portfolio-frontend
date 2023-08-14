@@ -10,10 +10,8 @@ export default async function Home() {
   const posts: Project[] = response.data
 
   return (
-    <>
-      <div>
-        <ProjectsHome projects={posts} />
-      </div>
-    </>
+    <main>
+      <ProjectsHome projects={posts} />
+    </main>
   )
 }
