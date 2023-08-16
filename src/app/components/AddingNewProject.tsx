@@ -61,9 +61,6 @@ export default function AddingNewProject() {
     }
   }
 
-  console.log(formError)
-  console.log(formError)
-
   return (
     <form
       onSubmit={handleCreateMemory}

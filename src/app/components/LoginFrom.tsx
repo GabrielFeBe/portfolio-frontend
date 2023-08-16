@@ -1,10 +1,11 @@
 'use client'
 import { api } from '@/lib/api'
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
 
 export default function LoginForm() {
+  const [error, setError] = useState(false)
   const route = useRouter()
 
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
@@ -21,7 +22,7 @@ export default function LoginForm() {
       route.refresh()
       // eslint-disable-next-line
     } catch (err: any) {
-      console.log(err)
+      setError(true)
     }
   }
 
@@ -30,7 +31,7 @@ export default function LoginForm() {
       <form
         onSubmit={handleLogin}
         action=""
-        className="flex h-96 flex-col justify-evenly"
+        className=" absolute flex h-96 flex-col justify-evenly"
       >
         <label
           htmlFor="email"
@@ -62,6 +63,11 @@ export default function LoginForm() {
         >
           Logando
         </button>
+        {error && (
+          <p className="absolute bottom-0 self-center text-red-600">
+            Senha ou Email inválido
+          </p>
+        )}
       </form>
     </main>
   )
