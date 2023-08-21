@@ -29,7 +29,7 @@ export default function Editing({ project }: Props) {
     const formData = new FormData(event.currentTarget)
     const fileToUpload = formData.get('coverUrl')
     const dateTime = dayjs(startDate).format()
-    let image = ''
+    let image = project.projectImage
     const token = Cookie.get('token')
     if (fileToUpload) {
       const uploadFormData = new FormData()
@@ -46,7 +46,7 @@ export default function Editing({ project }: Props) {
       }
     }
     try {
-      await api.post(
+      await api.patch(
         '/posts/editing',
         {
           projectImage: image,
