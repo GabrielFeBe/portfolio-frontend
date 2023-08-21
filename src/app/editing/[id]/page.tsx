@@ -12,6 +12,7 @@ export default async function page({ params }: { params: { id: string } }) {
       <StatementBall orange="E" rest="dit Project" bgColor="customGray" />
       <div className="flex min-h-screen w-full flex-col items-center justify-center">
         <Editing project={project} />
+        {/* For edit */}
       </div>
     </main>
   )
