@@ -6,11 +6,11 @@ export default function InfosCard() {
     <div className="mb-5 ml-20 mt-10 flex h-[446px] w-[404px] flex-col justify-between rounded-lg bg-gradient-to-r from-customOrange to-customRed text-lg font-bold sm:mb-0 lg:mt-0">
       <h3 className="pl-10 pr-5 pt-10 font-bold">Informação para contato</h3>
       <p className="pl-10 pr-5 text-left">
-        Vamos falar sobre negocios, eu adoraria ouvir qualquer proposta.
+        Vamos falar sobre negócios, eu adoraria ouvir qualquer proposta.
       </p>
       <div className="flex pl-3">
         <LocateFixed />
-        <span className="pl-1">Address: Rua peritiba 2770 Natal/Rn</span>
+        <span className="pl-1">Address: Rua Peritiba, 2770, Natal/RN</span>
       </div>
       <div className="flex pl-3">
         <Mail />

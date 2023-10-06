@@ -23,10 +23,6 @@ export default function SegundaColuna() {
         <div className="h-10 w-10  bg-[url('../assets/nodejs.svg')] bg-cover" />
         Node.js
       </div>
-      {/* <div className="h-10 w-10 transform-gpu rounded-lg bg-[url('../assets/mocha.svg')] bg-cover p-2 transition-transform hover:scale-hover-grow" />
-      <div className="h-10 w-10 transform-gpu rounded-lg bg-[url('../assets/nextjs.svg')] bg-cover p-2 transition-transform hover:scale-hover-grow" />
-      <div className="h-10 w-10 transform-gpu rounded-lg bg-[url('../assets/docker.svg')] bg-cover p-2 transition-transform hover:scale-hover-grow" />
-      <div className="h-10 w-10 transform-gpu rounded-lg bg-[url('../assets/nodejs.svg')] bg-cover p-2 transition-transform hover:scale-hover-grow" /> */}
     </div>
   )
 }
