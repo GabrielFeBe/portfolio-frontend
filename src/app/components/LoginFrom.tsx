@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 export default function LoginForm() {
   const [error, setError] = useState(false)
   const route = useRouter()
-
+  // funtion to handle login
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
