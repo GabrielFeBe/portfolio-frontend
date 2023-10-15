@@ -42,6 +42,16 @@ export default function ProjectPage({ project }: Props) {
             >
               Link para o repositorio
             </a>
+            {project.deployLink && (
+              <a
+                href={project.deployLink}
+                target="_blank"
+                rel="noreferrer"
+                className="text-gradient hover:text-gradient mt-2 pt-1 text-sm sm:text-base"
+              >
+                Link para o Deploy
+              </a>
+            )}
 
             <div className="absolute bottom-1 right-1">
               <StarIcon
