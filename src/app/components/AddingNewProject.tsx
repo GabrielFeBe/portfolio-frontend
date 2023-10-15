@@ -7,8 +7,12 @@ import MediaPicker from '@/app/components/MediaPicker'
 import { Camera } from 'lucide-react'
 import DatePickerComp from './DatePicker'
 import dayjs from 'dayjs'
+import Project from '@/types/Projects'
+interface Props {
+  project?: Project
+}
 
-export default function AddingNewProject() {
+export default function AddingNewProject({ project }: Props) {
   const [startDate, setStartDate] = useState(new Date())
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
   const [formError, setFormError] = useState(false)
@@ -47,6 +51,7 @@ export default function AddingNewProject() {
           title: formData.get('title'),
           mainLanguage: formData.get('mainLanguage'),
           createdAt: dateTime,
+          deployLink: formData.get('deployLink'),
         },
         {
           headers: {
@@ -133,6 +138,15 @@ export default function AddingNewProject() {
         className="w-full flex-1 resize-none rounded border-0 bg-transparent p-0 text-lg leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0"
         placeholder="<Coloque aqui seus projetos para que eles possam ser visualizados no site/>"
       />
+      <label htmlFor="deployLink">
+        <input
+          type="text"
+          name="deployLink"
+          id="deployLink"
+          placeholder="Link para deploy"
+          className="ml-1 h-6 w-52 rounded border-gray-400 bg-transparent"
+        />
+      </label>
       <button
         type="submit"
         className="font-alt hover:mix-blend inline-block self-end  rounded-full bg-gradient-to-r from-customOrange to-customRed px-5 py-3 text-sm uppercase leading-none transition duration-300 hover:opacity-70"

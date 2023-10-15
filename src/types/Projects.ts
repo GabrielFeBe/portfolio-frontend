@@ -7,4 +7,5 @@ export default interface Project {
   title: string
   mainLanguage: string
   createdAt: Date
+  deployLink: string
 }
