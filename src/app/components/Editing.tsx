@@ -2,7 +2,7 @@
 import { api } from '@/lib/api'
 import React, { FormEvent, useState } from 'react'
 import Cookie from 'js-cookie'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import MediaPicker from '@/app/components/MediaPicker'
 import { Camera } from 'lucide-react'
 import dayjs from 'dayjs'
@@ -23,7 +23,8 @@ export default function Editing({ project }: Props) {
   const [title, setTitle] = useState(project.title)
 
   const router = useRouter()
-
+  const params = useParams()
+  console.log(`/posts/editing/${params.id}`)
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
@@ -42,12 +43,14 @@ export default function Editing({ project }: Props) {
         })
         image = uploadResponse.data
       } catch (err) {
+        console.log(err)
         setFormError(true)
       }
     }
+    console.log(isFavorite)
     try {
       await api.patch(
-        '/posts/editing',
+        `/posts/editing/${params.id}}`,
         {
           projectImage: image,
           projectDescription: formData.get('content'),
@@ -66,6 +69,7 @@ export default function Editing({ project }: Props) {
       router.push('/')
       router.refresh()
     } catch (err) {
+      console.log(err)
       setFormError(true)
     }
   }
