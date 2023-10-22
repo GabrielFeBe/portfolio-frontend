@@ -50,7 +50,7 @@ export default function Editing({ project }: Props) {
     console.log(isFavorite)
     try {
       await api.patch(
-        `/posts/editing/${params.id}}`,
+        `/posts/editing/${params.id}`,
         {
           projectImage: image,
           projectDescription: formData.get('content'),
