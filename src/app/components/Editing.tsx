@@ -1,12 +1,13 @@
 'use client'
 import { api } from '@/lib/api'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import Cookie from 'js-cookie'
 import { useParams, useRouter } from 'next/navigation'
-import { Camera } from 'lucide-react'
 import dayjs from 'dayjs'
 import DatePickerComp from './DatePicker'
 import Project from '@/types/Projects'
+import { SingleImageDropzone } from './MediaPicker'
+import { useEdgeStore } from '@/lib/edgestore'
 
 interface Props {
   project: Project
@@ -20,33 +21,33 @@ export default function Editing({ project }: Props) {
   const [mainLanguage, setMainLanguage] = useState(project.mainLanguage)
   const [repLink, setRepLink] = useState(project.repositoryLink)
   const [title, setTitle] = useState(project.title)
+  const [file, setFile] = useState<File | string>()
 
+  const { edgestore } = useEdgeStore()
   const router = useRouter()
   const params = useParams()
   console.log(`/posts/editing/${params.id}`)
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
-    const fileToUpload = formData.get('coverUrl')
     const dateTime = dayjs(startDate).format()
     let image = project.projectImage
     const token = Cookie.get('token')
-    if (fileToUpload) {
-      const uploadFormData = new FormData()
-      uploadFormData.set('file', fileToUpload)
+    if (file instanceof File) {
       try {
-        const uploadResponse = await api.post('/upload', uploadFormData, {
-          headers: {
-            Authorization: token,
+        const response = await edgestore.publicFiles.upload({
+          file,
+          onProgressChange: (progress) => {
+            // you can use this to show a progress bar
+            console.log(progress)
           },
         })
-        image = uploadResponse.data
+        image = response.url
       } catch (err) {
         console.log(err)
         setFormError(true)
       }
     }
-    console.log(isFavorite)
     try {
       await api.patch(
         `/posts/editing/${params.id}`,
@@ -73,19 +74,18 @@ export default function Editing({ project }: Props) {
     }
   }
 
+  useEffect(() => {
+    setFile(project.projectImage)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <form
       onSubmit={handleCreateMemory}
       className="relative flex min-h-full w-full flex-col gap-2 xl:w-2/3"
     >
       <div className="flex flex-wrap items-center gap-4">
-        <label
-          htmlFor="media"
-          className="flex cursor-pointer items-center gap-1.5 text-sm "
-        >
-          <Camera className="h-4 w-4"></Camera>
-          Anexar mídia
-        </label>
         <label
           htmlFor="repositoryLink"
           className=" ml-1 flex items-center gap-1.5 text-sm "
@@ -144,7 +144,16 @@ export default function Editing({ project }: Props) {
         </label>
         <DatePickerComp setStartDate={setStartDate} startDate={startDate} />
       </div>
-      {/* <MediaPicker image={project.projectImage} /> */}
+      <SingleImageDropzone
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        width={'50%' as any}
+        height={500}
+        value={file}
+        onChange={(file) => {
+          setFile(file)
+        }}
+        className="bg-black"
+      ></SingleImageDropzone>
       <textarea
         name="content"
         spellCheck={false}
