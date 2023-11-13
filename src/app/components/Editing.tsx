@@ -3,7 +3,6 @@ import { api } from '@/lib/api'
 import React, { FormEvent, useState } from 'react'
 import Cookie from 'js-cookie'
 import { useParams, useRouter } from 'next/navigation'
-import MediaPicker from '@/app/components/MediaPicker'
 import { Camera } from 'lucide-react'
 import dayjs from 'dayjs'
 import DatePickerComp from './DatePicker'
@@ -145,7 +144,7 @@ export default function Editing({ project }: Props) {
         </label>
         <DatePickerComp setStartDate={setStartDate} startDate={startDate} />
       </div>
-      <MediaPicker image={project.projectImage} />
+      {/* <MediaPicker image={project.projectImage} /> */}
       <textarea
         name="content"
         spellCheck={false}

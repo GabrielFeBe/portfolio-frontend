@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from './components/NavBar'
 import MessageCard from './components/message/MessageCard'
+import { EdgeStoreProvider } from '../lib/edgestore'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {/* <NavBar /> */}
         <NavBar />
-        {children}
+        <EdgeStoreProvider>{children}</EdgeStoreProvider>
         <footer className="min-h-4/6-screen bg-customGray">
           <MessageCard />
         </footer>

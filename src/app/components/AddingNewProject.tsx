@@ -3,11 +3,12 @@ import { api } from '@/lib/api'
 import React, { FormEvent, useState } from 'react'
 import Cookie from 'js-cookie'
 import { useRouter } from 'next/navigation'
-import MediaPicker from '@/app/components/MediaPicker'
 import { Camera } from 'lucide-react'
 import DatePickerComp from './DatePicker'
 import dayjs from 'dayjs'
 import Project from '@/types/Projects'
+import { useEdgeStore } from '@/lib/edgestore'
+import { SingleImageDropzone } from './MediaPicker'
 interface Props {
   project?: Project
 }
@@ -16,26 +17,27 @@ export default function AddingNewProject({ project }: Props) {
   const [startDate, setStartDate] = useState(new Date())
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
   const [formError, setFormError] = useState(false)
+  const [file, setFile] = useState<File>()
+  const { edgestore } = useEdgeStore()
 
   const router = useRouter()
 
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
-    const fileToUpload = formData.get('coverUrl')
     const dateTime = dayjs(startDate).format()
     let image = ''
     const token = Cookie.get('token')
-    if (fileToUpload) {
-      const uploadFormData = new FormData()
-      uploadFormData.set('file', fileToUpload)
+    if (file) {
       try {
-        const uploadResponse = await api.post('/upload', uploadFormData, {
-          headers: {
-            Authorization: token,
+        const res = await edgestore.publicFiles.upload({
+          file,
+          onProgressChange: (progress) => {
+            // you can use this to show a progress bar
+            console.log(progress)
           },
         })
-        image = uploadResponse.data
+        image = res.url
       } catch (err) {
         setFormError(true)
       }
@@ -72,13 +74,6 @@ export default function AddingNewProject({ project }: Props) {
       className="relative flex min-h-full w-full flex-col gap-2 xl:w-2/3"
     >
       <div className="flex flex-wrap items-center gap-4">
-        <label
-          htmlFor="media"
-          className="flex cursor-pointer items-center gap-1.5 text-sm "
-        >
-          <Camera className="h-4 w-4"></Camera>
-          Anexar mídia
-        </label>
         <label
           htmlFor="repositoryLink"
           className=" ml-1 flex items-center gap-1.5 text-sm "
@@ -131,7 +126,16 @@ export default function AddingNewProject({ project }: Props) {
         </label>
         <DatePickerComp setStartDate={setStartDate} startDate={startDate} />
       </div>
-      <MediaPicker />
+      <SingleImageDropzone
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        width={'50%' as any}
+        height={500}
+        value={file}
+        onChange={(file) => {
+          setFile(file)
+        }}
+        className="bg-black"
+      ></SingleImageDropzone>
       <textarea
         name="content"
         spellCheck={false}
