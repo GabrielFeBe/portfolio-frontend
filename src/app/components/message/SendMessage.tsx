@@ -19,7 +19,7 @@ export default function SendMessage() {
         <input
           type="hidden"
           name="accessKey"
-          value="2d4c6379-7cc0-4bcd-bcfe-1dec43f65a72"
+          value="efc44ebd-9303-4ef3-a45c-099695c513dc"
         />
         <label
           htmlFor="name"
