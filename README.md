@@ -53,7 +53,7 @@ npm install
 ## Deploy
 
 - O projeto está hospedado no [Vercel](https://vercel.com/) e pode ser acessado [aqui](https://portfolio-frontend-seven-topaz.vercel.app/)
-- A versão em deploy só permite a visualizações de meus projetos, já que eu configurei o backend para que só seja possível para o meu usuário criar, editar e deletar projetos, eu não coloquei a rota de registro de usuários no frontend, logo não é possível criar um usuário para acessar o backend e assim criar, editar e deletar projetos, caso queira mudar isso tera que alterar frontend e backend.
+- A versão em deploy só permite a visualizações de meus projetos, já que eu configurei o backend e o frontend para não haver criação de novo usuário, e também não é possível fazer login, já que o backend está configurado para não permitir a criação de novos usuários, porem existe um admin button que serve apenas para testar a funcionalidade de admin, que permite a criação de novos projetos, e também a edição e remoção de projetos já existentes, mas nenhum desses dados são salvos no banco de dados, já que o usuario do admin é um usuario fake, e o backend está configurado para não permitir a criação de novos usuários.
 
 ## Licença
 
