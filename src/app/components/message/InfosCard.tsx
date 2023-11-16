@@ -10,7 +10,7 @@ export default function InfosCard() {
       </p>
       <div className="flex pl-3">
         <LocateFixed />
-        <span className="pl-1">Address: Rua Peritiba, 2770, Natal/RN</span>
+        <span className="pl-1">Endereço: Rua Peritiba, 2770, Natal/RN</span>
       </div>
       <div className="flex pl-3">
         <Mail />
