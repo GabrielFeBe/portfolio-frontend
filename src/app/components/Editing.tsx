@@ -33,6 +33,7 @@ export default function Editing({ project }: Props) {
     const dateTime = dayjs(startDate).format()
     let image = project.projectImage
     const token = Cookie.get('token')
+    if (!token) return setFormError(true)
     if (file instanceof File) {
       try {
         const response = await edgestore.publicFiles.upload({
@@ -41,6 +42,7 @@ export default function Editing({ project }: Props) {
             // you can use this to show a progress bar
             console.log(progress)
           },
+          input: { token },
         })
         image = response.url
       } catch (err) {

@@ -1,11 +1,26 @@
 import { initEdgeStore } from '@edgestore/server'
 import { createEdgeStoreNextHandler } from '@edgestore/server/adapters/next/app'
+import * as z from 'zod'
+import * as jwt from 'jsonwebtoken'
 const es = initEdgeStore.create()
 /**
  * This is the main router for the Edge Store buckets.
  */
 const edgeStoreRouter = es.router({
-  publicFiles: es.fileBucket(),
+  publicFiles: es
+    .fileBucket()
+    .input(z.object({ token: z.string() }))
+    .beforeUpload(({ ctx, input, fileInfo }) => {
+      console.log(ctx, fileInfo, input)
+      const user = <jwt.UserIDJwtPayload>jwt.decode(input.token)
+      if (!user) {
+        return false
+      }
+      if (user.id) {
+        return true
+      }
+      return false
+    }),
 })
 const handler = createEdgeStoreNextHandler({
   router: edgeStoreRouter,
