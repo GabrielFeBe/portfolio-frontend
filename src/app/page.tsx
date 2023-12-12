@@ -31,8 +31,8 @@ export default async function Home() {
         <StatementBall orange="P" rest="rojetos" bgColor="bg-customSlate" />
       </div>
       {error ? (
-        <h1 className="h-[500px] bg-customGray text-2xl font-bold">
-          Erro Com o Servidor
+        <h1 className="h-[578px] w-full bg-customSlate pt-20 text-center text-6xl font-bold text-red-500">
+          SERVER ERROR
         </h1>
       ) : (
         <ProjectsHome projects={data} />

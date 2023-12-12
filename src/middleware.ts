@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')?.value
-  const signInURL = 'https://portfolio-frontend-seven-topaz.vercel.app/login'
+  const signInURL = 'https://gabrielfedev.vercel.app/login'
   if (!token) {
     return NextResponse.redirect(signInURL, {
       headers: {
