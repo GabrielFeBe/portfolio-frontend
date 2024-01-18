@@ -9,7 +9,12 @@ export default async function Home() {
   let data: Project[] = []
   let error = false
   try {
+    const timeToThrowErrorIfServerIsDown = 8000
+    const clearIfApiIsFine = setTimeout(() => {
+      throw new Error('Server is down')
+    }, timeToThrowErrorIfServerIsDown)
     const response = await api.get('/favorites')
+    clearTimeout(clearIfApiIsFine)
 
     data = response.data
   } catch (err) {
