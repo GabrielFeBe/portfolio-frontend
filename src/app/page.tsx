@@ -8,15 +8,42 @@ import StatementBall from './components/StatementBall'
 export default async function Home() {
   let data: Project[] = []
   let error = false
-  try {
-    const timeToThrowErrorIfServerIsDown = 8000
-    const clearIfApiIsFine = setTimeout(() => {
-      throw new Error('Server is down')
-    }, timeToThrowErrorIfServerIsDown)
+  const asyncRequest = async () => {
+    // Usando a função setTimeout para simular um atraso de 15 segundos
+    // await new Promise((resolve) => setTimeout(resolve, 15000))
     const response = await api.get('/favorites')
-    clearTimeout(clearIfApiIsFine)
-
     data = response.data
+    return Promise.resolve('certo')
+  }
+
+  const checkServerStatus = async () => {
+    return new Promise((resolve, reject) => {
+      const timeToThrowErrorIfServerIsDown = 7000
+      const clearIfApiIsFine = setTimeout(() => {
+        console.log('demorou muito')
+        reject(new Error('Server is down'))
+      }, timeToThrowErrorIfServerIsDown)
+
+      asyncRequest()
+        .then((res) => {
+          console.log(res)
+          clearTimeout(clearIfApiIsFine)
+          return resolve('done')
+        })
+        .catch((err) => {
+          console.log(err)
+          clearTimeout(clearIfApiIsFine)
+          reject(new Error('Server is down'))
+        })
+    })
+  }
+
+  try {
+    await checkServerStatus()
+    console.log(data)
+    // const response = await api.get('/favorites')
+    // console.log(response)
+    // data = response.data
   } catch (err) {
     error = true
   }
