@@ -12,11 +12,11 @@ const edgeStoreRouter = es.router({
     .input(z.object({ token: z.string() }))
     .beforeUpload(({ ctx, input, fileInfo }) => {
       console.log(ctx, fileInfo, input)
-      const user = <jwt.UserIDJwtPayload>jwt.decode(input.token)
+      const user = <jwt.UserRoleJwtPayload>jwt.decode(input.token)
       if (!user) {
         return false
       }
-      if (user.id) {
+      if (user.email) {
         return true
       }
       return false

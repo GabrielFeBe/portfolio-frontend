@@ -12,12 +12,12 @@ export default function LoginForm() {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     try {
-      const uploadResponse = await api.post('user/login', {
+      const uploadResponse = await api.post('/login', {
         email: formData.get('email'),
         password: formData.get('password'),
       })
       const { token } = uploadResponse.data
-      Cookies.set('token', token, { expires: 7 })
+      Cookies.set('token', token, { expires: 1 })
       route.push('/adding')
       route.refresh()
       // eslint-disable-next-line
