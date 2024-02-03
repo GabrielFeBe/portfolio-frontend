@@ -26,7 +26,6 @@ export default function Editing({ project }: Props) {
   const { edgestore } = useEdgeStore()
   const router = useRouter()
   const params = useParams()
-  console.log(`/posts/editing/${params.id}`)
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
@@ -40,19 +39,17 @@ export default function Editing({ project }: Props) {
           file,
           onProgressChange: (progress) => {
             // you can use this to show a progress bar
-            console.log(progress)
           },
           input: { token },
         })
         image = response.url
       } catch (err) {
-        console.log(err)
         setFormError(true)
       }
     }
     try {
       await api.patch(
-        `/posts/editing/${params.id}`,
+        `/posts/${params.id}`,
         {
           projectImage: image,
           projectDescription: formData.get('content'),
@@ -71,7 +68,6 @@ export default function Editing({ project }: Props) {
       router.push('/')
       router.refresh()
     } catch (err) {
-      console.log(err)
       setFormError(true)
     }
   }
