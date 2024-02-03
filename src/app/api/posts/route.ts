@@ -4,6 +4,11 @@ import jwtsecret from '@/lib/jwtsecret'
 import prisma from '../../../../prisma'
 const correctEmail = process.env.EMAIL || 'emailteste@gmail.com'
 
+export async function GET(__req: NextRequest) {
+  const array = await prisma.projects.findMany()
+  return NextResponse.json(array)
+}
+
 export async function POST(req: NextRequest) {
   const token = req.headers.get('authorization')
   const {
@@ -40,7 +45,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ message: 'Project created sucessfully' })
   } catch (err) {
-    console.log('incorreto')
     return NextResponse.error()
   }
 }

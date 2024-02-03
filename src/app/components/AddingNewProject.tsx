@@ -62,8 +62,8 @@ export default function AddingNewProject({ project }: Props) {
           },
         },
       )
-      // router.push('/')
-      // router.refresh()
+      router.push('/')
+      router.refresh()
     } catch (err) {
       setFormError(true)
     }

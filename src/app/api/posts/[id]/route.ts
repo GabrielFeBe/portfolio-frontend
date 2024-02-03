@@ -10,6 +10,17 @@ interface Context {
   }
 }
 
+export async function GET(__req: NextRequest, context: Context) {
+  const id = Number(context.params.id)
+
+  const array = await prisma.projects.findMany({
+    where: {
+      id,
+    },
+  })
+  return NextResponse.json(array)
+}
+
 export async function PATCH(req: NextRequest, context: Context) {
   const { id } = context.params
   const token = req.headers.get('authorization')
@@ -53,7 +64,6 @@ export async function PATCH(req: NextRequest, context: Context) {
 
     return NextResponse.json({ message: 'Project updated sucessfully' })
   } catch (err) {
-    console.log('incorreto')
     return NextResponse.error()
   }
 }
