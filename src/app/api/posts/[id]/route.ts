@@ -13,7 +13,7 @@ interface Context {
 export async function GET(__req: NextRequest, context: Context) {
   const id = Number(context.params.id)
 
-  const array = await prisma.projects.findMany({
+  const array = await prisma.projects.findFirst({
     where: {
       id,
     },

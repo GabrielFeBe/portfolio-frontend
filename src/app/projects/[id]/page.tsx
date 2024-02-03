@@ -15,7 +15,6 @@ export default async function SpecificProject({
 
   const respose = await api.get(`/posts/${params.id}`)
   const project: Project = respose.data
-  console.log(token)
 
   return (
     <main>

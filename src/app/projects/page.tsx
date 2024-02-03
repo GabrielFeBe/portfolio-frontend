@@ -9,7 +9,6 @@ export default async function Home() {
   let error = false
   try {
     const response = await api.get('/posts')
-    console.log(response)
     posts = response.data
   } catch (err) {
     error = true

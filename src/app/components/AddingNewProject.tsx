@@ -34,7 +34,6 @@ export default function AddingNewProject({ project }: Props) {
           file,
           onProgressChange: (progress) => {
             // you can use this to show a progress bar
-            console.log(progress)
           },
           input: { token },
         })
