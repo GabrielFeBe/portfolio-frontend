@@ -2,7 +2,9 @@
 
 <!-- descrição breve -->
 
-Frontend do projeto de portfólio pessoal que é integrado com o backend, que pode ser encontrado [aqui](https://github.com/GabrielFeBe/portfolio-backend)
+~~Frontend do projeto de portfólio pessoal que é integrado com o backend, que pode ser encontrado [aqui](https://github.com/GabrielFeBe/portfolio-backend)~~
+<br>
+Agora este Frontend funciona sozinho, já que eu coloquei o prisma no FE e o banco de dados do vercel, seguindo toda a documentação para não fazer besteira, eu fiz essa mudança para conseguir deixar o projeto online de uma vez por todas, já que nos últimos meses passei por dificuldades à procura de um serviço gratuito de imagens para BE, como não achei nenhum que funcione fiz essa mudança
 
 ## Tabela de conteúdos
 
