@@ -36,6 +36,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.pdf",
+    "**/*.svg",
     ".next/types/**/*.ts",
     "src/app/components/Provider.jsx"
   ],

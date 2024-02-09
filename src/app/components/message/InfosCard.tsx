@@ -8,9 +8,17 @@ export default function InfosCard() {
       <p className="pl-10 pr-5 text-left">
         Vamos falar sobre negócios, eu adoraria ouvir qualquer proposta.
       </p>
-      <div className="flex pl-3">
+      <div className="flex pl-3 text-black hover:text-gray-800">
         <LocateFixed />
-        <span className="pl-1">Endereço: Rua Peritiba, 2770, Natal/RN</span>
+        <a
+          download={'CV-Document'}
+          target="_blank"
+          href="/curriculo.pdf"
+          className="pl-1"
+          rel="noreferrer"
+        >
+          Baixe aqui meu CV
+        </a>
       </div>
       <div className="flex pl-3">
         <Mail />
