@@ -4,7 +4,7 @@ import jwtsecret from '@/lib/jwtsecret'
 import prisma from '../../../../prisma'
 const correctEmail = process.env.EMAIL || 'emailteste@gmail.com'
 
-export async function GET(__req: NextRequest) {
+export async function GET() {
   const array = await prisma.projects.findMany()
   return NextResponse.json(array)
 }

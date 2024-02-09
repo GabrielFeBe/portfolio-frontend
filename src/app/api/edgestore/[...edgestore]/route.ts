@@ -16,7 +16,7 @@ const edgeStoreRouter = es.router({
       if (!user) {
         return false
       }
-      if (user.email) {
+      if (user.email && user.role === 'ADMIN') {
         return true
       }
       return false
